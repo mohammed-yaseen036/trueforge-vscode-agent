@@ -1,0 +1,12 @@
+{
+  "primary": {
+    "provider": "configure-in-TrueForge",
+    "model": "replace-locally",
+    "apiKey": "never-commit-a-real-key"
+  },
+  "fallback": {
+    "provider": "configure-in-TrueForge",
+    "model": "replace-locally",
+    "apiKey": "never-commit-a-real-key"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.vscode-test/
+*.vsix
+.env
+trueforge/models.local.*
+trueforge/agent.definition.local.*
+.trueforge-undo/

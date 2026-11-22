@@ -1,0 +1,105 @@
+{
+  "name": "trueforge-vscode-agent",
+  "displayName": "TrueForge VS Code Agent",
+  "description": "A VS Code coding agent driven by a local TrueForge runtime.",
+  "version": "0.1.0",
+  "publisher": "syntax-sorcerers",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:trueforge.openPanel",
+    "onCommand:trueforge.inlineEdit",
+    "onCommand:trueforge.cancel",
+    "onCommand:trueforge.undoLastApply"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "trueforge.openPanel",
+        "title": "TrueForge: Open Agent"
+      },
+      {
+        "command": "trueforge.inlineEdit",
+        "title": "TrueForge: Inline Edit"
+      },
+      {
+        "command": "trueforge.cancel",
+        "title": "TrueForge: Cancel Turn"
+      },
+      {
+        "command": "trueforge.undoLastApply",
+        "title": "TrueForge: Undo Last Applied Change"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "trueforge.inlineEdit",
+        "key": "ctrl+alt+k",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "TrueForge",
+      "properties": {
+        "trueforge.endpoint": {
+          "type": "string",
+          "default": "http://127.0.0.1:8787",
+          "description": "Local TrueForge HTTP API endpoint."
+        },
+        "trueforge.agent": {
+          "type": "string",
+          "default": "coding-agent",
+          "description": "TrueForge agent definition or alias."
+        },
+        "trueforge.fallbackAgent": {
+          "type": "string",
+          "default": "",
+          "description": "Optional fallback TrueForge agent alias."
+        },
+        "trueforge.mcpPort": {
+          "type": "number",
+          "default": 4318,
+          "description": "Port for the local editor tool server."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "trueforge",
+          "title": "TrueForge",
+          "icon": "$(sparkle)"
+        }
+      ]
+    },
+    "views": {
+      "trueforge": [
+        {
+          "id": "trueforge.agentView",
+          "name": "Agent"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "npm run typecheck && esbuild src/extension.ts --bundle --platform=node --external:vscode --outfile=dist/extension.js",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build"
+  },
+  "dependencies": {
+    "diff": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.95.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.2"
+  }
+}

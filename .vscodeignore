@@ -1,0 +1,10 @@
+.vscode/**
+test/**
+src/**
+tsconfig.json
+esbuild.config.*
+*.ts
+!dist/**
+!trueforge/**
+!README.md
+!LICENSE

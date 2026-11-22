@@ -1,0 +1,14 @@
+{
+  "name": "coding-agent",
+  "system_prompt_file": "./system-prompt.md",
+  "mcp_servers": [
+    {
+      "name": "trueforge-vscode-editor",
+      "url": "http://127.0.0.1:4318/mcp"
+    }
+  ],
+  "approval_required_tools": [
+    "propose_write",
+    "run_command"
+  ]
+}
